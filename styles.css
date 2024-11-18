@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #ff6a00, #092bee);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.hero {
+    background: url('background.jpg') no-repeat center center/cover;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* تنسيق بطاقات المنتجات */
+.product-card {
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-image {
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+/* تنسيقات الهيدر */
+header {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #ddd;
+}
+
+/* تنسيقات القائمة العلوية */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #ff6a00;
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 106, 0, 0.4);
+}
+
+/* تنسيقات أقسام الموقع */
+section {
+    padding: 80px 20px;
+    background: url('images/hero-background.jpg') no-repeat center center/cover;
+    color: #fff;
+    background-blend-mode: overlay;
+}
+
+section h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+section p {
+    font-size: 1.1rem;
+    margin: 0 auto 40px;
+    max-width: 700px;
+    line-height: 1.8;
+    color: #fff;
+    font-weight: 300;
+}
+
+/* تصميم المنتجات */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product h3 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    color: #333;
+}
+
+.product p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #ff6a00;
+}
+
+/* عدم اختفاء المنتجات */
+.product-container .product {
+    opacity: 1; /* تثبيت الشفافية على 1 */
+    transform: translateY(0); /* إلغاء التحريك السفلي */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: none; /* إلغاء تأثير الظهور */
+}
+
+/* إزالة تأثير الظهور التدريجي */
+@keyframes fadeIn {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تنسيق التنقل بين الصفحات */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.pagination a {
+    background-color: #ff6a00;
+    color: #fff;
+    padding: 12px 20px;
+    margin: 0 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #e55d00;
+    transform: scale(1.05);
+}
+
+/* تحسين العرض على الأجهزة المحمولة */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    section p {
+        font-size: 1rem;
+    }
+
+    .product-container {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    .product h3 {
+        font-size: 1.3rem;
+    }
+
+    .pagination a {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+}
