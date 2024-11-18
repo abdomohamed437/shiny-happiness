@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجات النوساني</title>
+    <style>
+        /* تنسيقات عامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #ff6a00, #ee0979);
+            color: #fff;
+            text-align: center;
+        }
+
+        /* تنسيقات الهيدر */
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px 0;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            border-radius: 5px;
+        }
+
+        /* تنسيقات الأقسام */
+        section {
+            padding: 80px 20px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* تنسيق تسجيل الدخول */
+        .login-form, .dashboard {
+            margin: 20px auto;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .login-form input, .dashboard input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .login-form button, .dashboard button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6a00;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <?php
+    session_start();
+
+    // بيانات تسجيل الدخول الصحيحة
+    $correct_username = "Ali";
+    $correct_password = "password123";
+
+    // التحقق من تسجيل الدخول
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        if ($username === $correct_username && $password === $correct_password) {
+            $_SESSION['loggedin'] = true;
+        } else {
+            echo "<p>اسم المستخدم أو كلمة المرور غير صحيحة!</p>";
+        }
+    }
+
+    // التحقق من تسجيل الخروج
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    }
+    ?>
+
+    <header>
+        <h1>منتجات النوساني للمصنوعات الجلدية</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#bags">الشنط</a></li>
+                <li><a href="#belts">الأحزمة</a></li>
+                <li><a href="#wallets">المحافظ</a></li>
+                <li><a href="#login">المدير</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- قسم المنتجات -->
+    <section id="home">
+        <h2>المنتجات المتوفرة</h2>
+        <div class="product-container">
+            <div class="product">
+                <img src="images/bag1.jpg" alt="شنطة جلد" width="100%">
+                <h3>شنطة جلد كلاسيكية</h3>
+                <p>السعر: 500 جنيه</p>
+            </div>
+            <div class="product">
+                <img src="images/belt1.jpg" alt="حزام جلد" width="100%">
+                <h3>حزام جلد أنيق</h3>
+                <p>السعر: 200 جنيه</p>
+            </div>
+            <!-- المزيد من المنتجات -->
+        </div>
+    </section>
+
+    <!-- قسم الشنط -->
+    <section id="bags">
+        <h2>شنط جلدية</h2>
+        <div class="product">
+            <img src="images/bag1.jpg" alt="شنطة جلد" width="100%">
+            <h3>شنطة جلد كلاسيكية</h3>
+            <p>السعر: 500 جنيه</p>
+        </div>
+    </section>
+
+    <!-- قسم الأحزمة -->
+    <section id="belts">
+        <h2>أحزمة جلدية</h2>
+        <div class="product">
+            <img src="images/belt1.jpg" alt="حزام جلد" width="100%">
+            <h3>حزام جلد أنيق</h3>
+            <p>السعر: 200 جنيه</p>
+        </div>
+    </section>
+
+    <!-- قسم المحافظ -->
+    <section id="wallets">
+        <h2>محافظ جلدية</h2>
+        <div class="product">
+            <img src="images/wallet1.jpg" alt="محفظة جلد" width="100%">
+            <h3>محفظة جلدية كلاسيكية</h3>
+            <p>السعر: 300 جنيه</p>
+        </div>
+    </section>
+
+    <!-- تسجيل الدخول -->
+    <section id="login">
+        <?php if (!isset($_SESSION['loggedin'])): ?>
+            <div class="login-form">
+                <h2>تسجيل الدخول للمدير</h2>
+                <form action="#login" method="post">
+                    <input type="text" name="username" placeholder="اسم المستخدم" required>
+                    <input type="password" name="password" placeholder="كلمة المرور" required>
+                    <button type="submit" name="login">تسجيل الدخول</button>
+                </form>
+            </div>
+        <?php else: ?>
+            <!-- لوحة التحكم -->
+            <div class="dashboard">
+                <h2>لوحة تحكم النوساني</h2>
+                <form action="#login" method="post" enctype="multipart/form-data">
+                    <input type="text" name="product_name" placeholder="اسم المنتج" required>
+                    <input type="text" name="price" placeholder="السعر" required>
+                    <input type="file" name="product_image" required>
+                    <button type="submit">إضافة المنتج</button>
+                </form>
+                <a href="?logout=true" style="display:block; margin-top:20px; color:#ff6a00;">تسجيل الخروج</a>
+            </div>
+        <?php endif; ?>
+    </section>
+</body>
+</html>

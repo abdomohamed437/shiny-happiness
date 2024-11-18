@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النوساني للمصنوعات الجلديه</title>
+    <style>
+        /* تنسيقات عامة */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #1034d3;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* تنسيق العنوان الرئيسي */
+        .main-title {
+            font-size: 2.5rem;
+            color: #333;
+            background-color: #0400ff;
+            padding: 20px;
+            margin: 0;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* تنسيق قسم المنتجات المتوفرة */
+        .section-title {
+            font-size: 1.8rem;
+            color: #444;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* تنسيق المنتجات */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #0ca2e7;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 10px 0 5px;
+        }
+
+        .product-price {
+            color: #ff6a00;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- العنوان الرئيسي -->
+    <header class="main-title">
+        المصنوعات الجلدية
+    </header>
+
+    <!-- عنوان قسم المنتجات المتوفرة -->
+    <section>
+        <h2 class="section-title">المنتجات المتوفرة</h2>
+        <div class="product-container">
+            <!-- بطاقة منتج 1 -->
+            <div class="product-card">
+                <img src="product1.jpg" alt="منتج 1">
+                <h3 class="product-title">حقيبة جلدية فاخرة</h3>
+                <p class="product-price">$50</p>
+            </div>
+
+            <!-- بطاقة منتج 2 -->
+            <div class="product-card">
+                <img src="product2.jpg" alt="منتج 2">
+                <h3 class="product-title">محفظة جلدية</h3>
+                <p class="product-price">$30</p>
+            </div>
+
+            <!-- بطاقة منتج 3 -->
+            <div class="product-card">
+                <img src="product3.jpg" alt="منتج 3">
+                <h3 class="product-title">حزام جلد طبيعي</h3>
+                <p class="product-price">$20</p>
+            </div>
+
+            <!-- أضف المزيد من المنتجات هنا -->
+        </div>
+    </section>
+
+</body>
+</html>
